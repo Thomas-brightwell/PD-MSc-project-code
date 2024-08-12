@@ -132,6 +132,12 @@ There are many different database that can be used for clustering genes in a pat
 \subsubsection{Hypothesis}
 The hypothesis being investigated in this study is: "Mitochondrial dysfunction plays a major role in the onset and pathophysiology of sporadic Parkinson’s Disease via multiple identifiable molecular pathways". 
 Mitochondrial (dys)function is a key player in the aetiology of neurological diseases\cite{Bartman2024MitochondrialDiseases}, and particularly neurodegenerative diseases such as Alzheimer's and PD\cite{MonzioCompagnoni2020TheDisease}. As discussed in part 2.2, there is clear evidence showing potentially multiple different pathways modulating PD in patients. However, what is less clear is the role genetics may have in shaping mitochondrial dysfunction in PD, and accordingly, this is what our hypothesis is designed to test.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/Flowchartmockup.png}
+    \caption{Nonfinal flowchart (thought it better to check if substance was good before making it look nice!}
+    \label{fig:enter-label}
+\end{figure}
 \subsubsection{Aims}
 \label{subsubsec:Aims}
 There are four aims of this study:
@@ -142,7 +148,7 @@ There are four aims of this study:
 \\Figure x.x shows the workflow of this project, summarising the methods undertaken to achieve the 4 aims.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\linewidth]{Thesis/Flowchartmockup.png}
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/exampleblock.png}
     \caption{Nonfinal flowchart (thought it better to check if substance was good before making it look nice!}
     \label{fig:enter-label}
 \end{figure}
@@ -223,12 +229,19 @@ mean
 median
 Max
 hist of length
-
+The complete information for the blocks are available here:
 
 
 STEP DIAGRAM OF AN EXAMPLE BLOCK
+\newpage
+\begin{figure}[hbt!]
+    \centering
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/exampleblock.png}
+    \caption{Step diagram showing genetic coordinates in LDU and physical b37 coordinates in kb}
+    \label{fig:enter-label}
+\end{figure}
 
-
+\newpage
 \subsection{eQTL results}
 Combined, for GTEx and BRAINEAC:
 Summary for number of cisgenes
@@ -266,12 +279,33 @@ A total of 341 \textit{cis}-genes were identified as being significantly ($P \le
 Summary for all cisgenes, are the DEGs or not:
 Initial, GEO, PPMI, overlap
 
-
 MEGA venn diagram of ALL cis-genes across BRAINEAC PPMI GEO GTEX
 
+\newpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/vennsigcisgenes.png}
+    \caption{Venn diagramn showing overlap between significant \textit{cis}-genes in the four databases, GTEx, BRAINEAC, GEO, and PPMI}
+    \label{fig:enter-label}
+\end{figure}
+
+There were a total of 151 \textit{cis}-genes that showed both significant ($P \leq 0.05$) evidence of association with a variant in high LD with the lead SNP (the GTEx and BRAINEAC subsets), and significant ($P \leq 0.05$) evidence of differential expression between cases and controls (the GEO and PPMI subsets). The centre of the Venn diagram is sparsely populated - only 11 \textit{cis}-genes were significantly ($P \leq 0.05$) associated with a variant in high LD with the lead SNP in both the GTEx and BRAINEAC datasets. Additionally, only 45 \textit{cis}-genes were significantly ($P \leq 0.05$) differentially expressed in both PPMI and GEO. There were no \textit{cis}-genes that were part of all 4 datasets. 
+\newpage
 \subsection{Pathway analysis results}
 Summary information for the blocks
 
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+                 & GEO & PPMI \\ \hline
+n, upregulated   & 0   & 2    \\ \hline
+n, downregulated & 26  & 0    \\ \hline
+\end{tabular}
+\caption{summary of}
+\end{table}
+
+The full mitochondrial pathways dataset and the results from both GEO and PPMI are available \href{}{here}.
 using fgsea
 GSEA of mito 43 + NEMG lists (from hannah paper)
 26 of the 43 mitochondrial pathways were significantly (FDR $\leq0.05$) down-regulated in the observational case-control expression data from the GEO. This shows heavy mitochondrial disruption, but
@@ -280,7 +314,15 @@ Also on KEGG/similar
 Some way of showing go terms/pathway of the genes
 
 Network analysis
-
+\newpage
+\begin{landscape}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/network analysis.png}
+    \caption{Network analysis showing connections between disease-eQTL-\textit{cis}-DEGs}
+    \label{fig:enter-label}
+\end{figure}
+\end{landscape}
 \section{Discussion}
 
 strengths and limitations
