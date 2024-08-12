@@ -207,12 +207,15 @@ After establishing the list of significant disease-eQTL-\textit{cis}-genes, this
 
 SUMMARY TABLE 1:
 \begin{table}[h]
-    \hskip-1.5cm
-    \begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
-        \hline
-        
-         \hline
-    \end{tabular}
+\begin{tabular}{|l|l|l|l|}
+\hline
+       & Width (kb) & Number of variants & Number of high LD variants \\ \hline
+Min    & 0.418      & 13                 & 1                          \\ \hline
+Max    & 247.105    & 6026               & 295                        \\ \hline
+Mean   & 38.18495   & 640.7356           & 18.83721                   \\ \hline
+Median & 25.322     & 392                & 5.5                        \\ \hline
+\end{tabular}
+\caption{Summary information of block sizes}
 \end{table}
 LENGTH KB  NUMBER OF VARIANTs (+high LD)  #CIS genes
 Min
@@ -220,6 +223,7 @@ mean
 median
 Max
 hist of length
+
 
 
 STEP DIAGRAM OF AN EXAMPLE BLOCK
@@ -235,8 +239,30 @@ mean
 median
 hist of signif cisgenes
 
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+       & n, cis-genes & n, significant cis-genes & Relative eQTL abundance \\ \hline
+Min    & 4                   & 0                               & 0                                       \\ \hline
+Max    & 133                 & 31                              & 78.94737                                \\ \hline
+Mean   & 39.64773            & 3.875                           & 12.55692                                \\ \hline
+Median & 25                  & 2                               & 4.067852                                \\ \hline
+\end{tabular}
+\caption{Summary information of eQTLs}
+\end{table}
+
+
+
+
+
+Significant cis-genes per (n(cis-genes)*(n(high LD variants)*1000)
+any specific interesting blocks?
+eQTLs/(genes*variants)
+A total of 341 \textit{cis}-genes were identified as being significantly ($P \leq 0.05$) associated with at least one variant in high LD with the lead SNPs with the coordinates of the LD block.
+
 
 \subsection{DGE results}
+
 Summary for all cisgenes, are the DEGs or not:
 Initial, GEO, PPMI, overlap
 
@@ -248,11 +274,12 @@ Summary information for the blocks
 
 using fgsea
 GSEA of mito 43 + NEMG lists (from hannah paper)
+26 of the 43 mitochondrial pathways were significantly (FDR $\leq0.05$) down-regulated in the observational case-control expression data from the GEO. This shows heavy mitochondrial disruption, but
 Also on KEGG/similar
 
 Some way of showing go terms/pathway of the genes
 
-
+Network analysis
 
 \section{Discussion}
 
@@ -270,6 +297,7 @@ This may impact which genes are differentially expressed.
 
 Some talk about sQTL vs the eQTL
 
+\section{Conclusion}
 
 
 \bibliographystyle{unsrt}
