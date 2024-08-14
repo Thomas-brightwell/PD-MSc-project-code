@@ -1,14 +1,15 @@
+%TC:ignore
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{hyperref}
 \usepackage{lscape}
 \usepackage{pdflscape}
-
+%TC:endignore
 
 \title{The genetics of Mitochondrial Dysfunction in Sporadic Parkinson's disease}
 \author{Thomas Brightwell; Supervisors: Toby Andrew and Rahel Feleke}
 
-\date{August 2024}
+\date{August 22nd 2024}
 
 \begin{document}
 
@@ -125,6 +126,16 @@ This study attempts to solve some of these issues by employing population specif
 A Quantitative Trait Locus (QTL)is a regions of the genome that is associated with, and therefore potentially explain, a difference in a quantitative trait between individuals. In a given set of samples, QTL is calculated by linear regression of the trait being investigated against the genotype of a particular loci\cite{Duffy2017AnalysisLoci}. Classically, QTLs were considered for true quantitative traits like height, but more modern analyses employ QTL analysis for traits like gene expression as an intermediary for a complex trait like disease state. This methodology has been particularly useful when attempting to understand GWAS results that highlight certain regions of the genome as associated with a complex trait, as a QTL analysis provides a potential explanation for how the discovered loci interact with the complex traits\cite{Neumeyer2020StrengtheningLoci}. In this study, the complex trait being considered is sPD, and the quantitative trait used as an intermediary is the mRNA expression level of genes, so the QTLs are specifically expression Quantitative Trait Loci (eQTLs). For more details on the eQTL analysis see \hyperref[subsec:eQTL]{methods section 3.2} The use of eQTLs in this study is to implicate causal genes for the lead SNPs found in the Nalls. et al.\cite{Nalls2019IdentificationStudies} meta analysis, which is achieved by co-locating the QTL with the disease loci.
 \subsubsection{Co-location}
 A Co-location analysis tests if one genetic loci is associated with two phenotypic signals\cite{Giambartolomei2014BayesianStatistics}. Whilst this can conduct on any two signals, they have been successfully used to test if a single loci is responsible for both a complex disease trait GWAS signal and a change in a molecular trait like gene expression\cite{Cano-Gamez2020FromDiseases}. There are multiple methods for co-localization - with some based entirely on genome-wide summary statistics, but in this study we are directly testing the defined PD loci from Nalls et al.\cite{Nalls2019IdentificationStudies} for association with a change in gene expression. By first defining the regions we are testing, then only testing those, we avoid some of the issues with multiple testing that genome-wide analyses can have. This is done by using high-resolution genetic maps\cite{Maniatis2004PositionalDisequilibrium.}, and follows a similar method to that described by Maude et al.\cite{Maude2021NewDiabetes.}, to search for QTLs within the physical coordinates of the LD block around each of the lead SNP.
+
+STEP DIAGRAM OF AN EXAMPLE BLOCK
+\newpage
+\begin{figure}[hbt!]
+    \centering
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/exampleblock.png}
+    \caption{Step diagram showing genetic coordinates in LDU and physical b37 coordinates in kb}
+    \label{fig:enter-label}
+\end{figure}
+
 \subsubsection{Pathway Analyses}
 The biological interpretation of multiple individual genes identified in a study can be very difficult, especially when conducting a genome-wide study with potentially hundreds of significant genes. One approach to solving this problem is to reduce the complexity of your results by employing strategies that cluster genes together. Two main approaches for this clustering are network and pathway analysis. Network analyses cluster genes based on their interactions, creating networks of genes encoding proteins that all have physical interactions with each other\cite{Maayan2011IntroductionBiology}. Pathway analyses instead cluster genes based on shared functions and roles in the cell\cite{Garcia-Campos2015PathwayArt} - for example, grouping all genes that code for a part of the TCA cycle into specific TCA cycle group. The difference in approach between network and pathway analyses lend themselves to different research. As pathway analyses are conducted on pre-defined pathways, they are better at testing hypothesis driven research, whereas network analyses are more useful for discovery driven research, as the end point is not pre-defined.
 There are many different database that can be used for clustering genes in a pathway analysis, such as Gene Ontology (GO)\cite{Ashburner2000GeneBiology}, or the Kyto Encyclopedia of Genes and Genomes (KEGG)\cite{Kanehisa2016KEGGAnnotation}. There are also many different tools to analize your set of genes in comparison to the chosen database, and in this study we will be using Gene Set Enrichment Analyis (GSEA)\cite{Subramanian2005GeneProfiles}. The ranking approach of GSEA allows for detection of small differences across multiple genes within the same pathway, as the score for a pathway can be affected by both outliers with extreme expression differences, and small differences within many genes. It is worth noting that the power to detect significant results in GSEA is heavily contingent on well defined and functionally meaningful pathways, and poorly-choses datasets will likely not yield any meaningful results. See section 3.6 for more details on GSEA.
@@ -148,7 +159,7 @@ There are four aims of this study:
 \\Figure x.x shows the workflow of this project, summarising the methods undertaken to achieve the 4 aims.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\linewidth]{Thesis/thesis images/exampleblock.png}
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/Visualhypothesis.png}
     \caption{Nonfinal flowchart (thought it better to check if substance was good before making it look nice!}
     \label{fig:enter-label}
 \end{figure}
@@ -201,7 +212,7 @@ The studies were all specifically sPD, not fPD. Information about the samples ar
     \label{tab:my_label}
 \end{table}
 \end{landscape}
-\\From these 6 studies, meta-p values (nominal and adjusted) and meta-z scores were calculated for expression between cases and controls using GeneMeta\cite{LusaL2024GeneMeta:Experiments.} and following similar methodology to that described in Maude et al. 2021\cite{Maude2021NewDiabetes.}. The list of significant eQTL \textit{cis}-genes was then filtered through the results, to select only the genes which had nominally significant ($p\leq0.05$) differential expression between sPD cases and controls.
+From these 6 studies, meta-p values (nominal and adjusted) and meta-z scores were calculated for expression between cases and controls using GeneMeta\cite{LusaL2024GeneMeta:Experiments.} and following similar methodology to that described in Maude et al. 2021\cite{Maude2021NewDiabetes.}. The list of significant eQTL \textit{cis}-genes was then filtered through the results, to select only the genes which had nominally significant ($p\leq0.05$) differential expression between sPD cases and controls.
 
 \subsubsection{PPMI}
 The Parkinson's Progression Markers Initiative (PPMI)\cite{Marek2011ThePPMI} is a large-scale multinational consortium with multiple sub-studies. The data used in this study was accessed from FOUNDIN-PD\cite{Bressan2023TheMechanism}, which is a repository for induced Pluripotent Stem Cell (iPSC) data, differentiated from blood samples of PD patients and from healthy controls. The samples used were restricted to just those differentiated into dopaminergic neurons, to model the SN that is the main focus of this study. The final time point, day 65, was used as the analysis date for this project. Additionally, carriers of \textit{LRRK2}, \textit{GBA1} or \textit{SNCA} mutations were removed. 37 single cell RNA (scRNA) samples were selected, from which pseudobulk counts were generated for each cell type. Once the proccessing of the scRNA data was complete, DGE was performed on the cases against the controls using \textit{limma}\cite{Ritchie2015LimmaStudies}. The list of genes validated in GEO was then further filtered to just those that showed significant evidence ($p\leq0.05$) of differential expression in the experimental iPSC dataset. This created the final list of genes that showed significant evidence of differential expression by lead-SNP associated disease loci, by observational sPD case-control data, and by experimental sPD case-control data. These were then taken forward for pathway analysis.
@@ -209,8 +220,19 @@ The Parkinson's Progression Markers Initiative (PPMI)\cite{Marek2011ThePPMI} is 
 After establishing the list of significant disease-eQTL-\textit{cis}-genes, this list was used for multiple different analyses. The first analysis was to classify all genes within this list as mitochondrial or not based on the Mitocarta3.0 database\cite{Rath2021MitoCarta3.0:Annotations} of known mitochondrial genes. Following the methodology in \cite{Maude2021NewDiabetes.}, these were used to perform Gene Set Enrichment Analysis\cite{Subramanian2005GeneProfiles}(GSEA). GSEA ranks all the genes in an input, and then tests if there is significant evidence of the query list of genes being clustered at one end (that is, the query set of genes being either up or down regulated compared to the background). GSEA was performed with the genomic background from of genes that passed an expression threshold (at least 2 samples with $\geq 10$ reads) against: 43 mitochondrial pathways downloaded from MsigDB\cite{Liberzon2011Molecular3.0}, chosen based on their members having a high level of overlap ($\geq25\%$) with Mitocarta\cite{Rath2021MitoCarta3.0:Annotations}, all significant disease-eQTL \textit{cis}-DEGs, and just the significant cis\textit{DEGs} that are NEMGs. Additionally, a test of \textit{cis}-DEG NEMGs against the background of all NEMGs was performed. GSEA was performed using the fgsea R package\cite{KorotkevichG2019FastAnalysis}.
 \section{Results}
 \subsection{LD block locations}
+\label{subsec:blocks}
+Based on the 90 lead SNPs identified by Nalls et al.\cite{Nalls2019IdentificationStudies}, a total of 88 disease loci LD blocks were defined, based on the high-resolution European population genetic map\cite{Maniatis2004PositionalDisequilibrium.}, where all variants were $\pm 0$ LDU from each other. An additonal dataset based on $\pm 0.5$ LDU was generate, but not used for further analysis. The count of LD blocks is reduced from the 90 lead SNPs, as 2 pairs of 2 lead SNPs were in close proximity, and within the same stretch of linkage disequilibrium.
 
 
+
+\newpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{Thesis/thesis images/blockhistogram.png}
+    \caption{Histogram showing the frequency of different block sizes in kb}
+    \label{fig:enter-label}
+\end{figure}
+The histogram highlights how, despite most blocks having a length of less than 50kb, there were some outliers that stretched much longer than average. These blocks are therefore long stretches where there has been little historical recombination within the European population.
 SUMMARY TABLE 1:
 \begin{table}[h]
 \begin{tabular}{|l|l|l|l|}
@@ -223,6 +245,10 @@ Median & 25.322     & 392                & 5.5                        \\ \hline
 \end{tabular}
 \caption{Summary information of block sizes}
 \end{table}
+
+The mean length in kb of the LD blocks was 38.2kb, which is a much smaller region than most studies define as a single locus. As an example, Nalls et al.\cite{Nalls2019IdentificationStudies} defined variants as within a single locus if they were $\pm 250kb$ from each other. This highlights the specificity that the genetic maps provide this study.
+Summary information across these 88 LD blocks is shown below.
+
 LENGTH KB  NUMBER OF VARIANTs (+high LD)  #CIS genes
 Min
 mean
@@ -232,16 +258,32 @@ hist of length
 The complete information for the blocks are available here:
 
 
-STEP DIAGRAM OF AN EXAMPLE BLOCK
 \newpage
-\begin{figure}[hbt!]
-    \centering
-    \includegraphics[width=1\linewidth]{Thesis/thesis images/exampleblock.png}
-    \caption{Step diagram showing genetic coordinates in LDU and physical b37 coordinates in kb}
-    \label{fig:enter-label}
-\end{figure}
+\subsection{Coding variant search}
+One of the lead SNPs, rs34637584, was also identified in Nalls et al.\cite{Nalls2019IdentificationStudies} as a rare coding variant in the LRRK2 gene, andis reported in ClinVar as likely pathogenic for fPD. Accordingly, this variant, and its correspond LD block (block 58) was excluded from further analysis, as it likely relates to fPD rather than sPD. Using ANNOVAR\cite{Wang2010ANNOVAR:Data}, a further 23 coding variants were identified that were in high LD with the lead SNPs and within the LD blocks, based on available 1000 genomes project data. 12 of these variants were synonymous, so were assumed to be benign. The remaining 11 missense variants may offer explanations for the associations detected at these loci. Pathogenicity of these variants was predicted, and summarised below:
 
-\newpage
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+rsid        & Affected gene & Exon & MAF   & PolyPhen & SIFT score & PHRED    \\ \hline
+rs76763715  & GBA           & 9    & 0.003 & 0.714    & 0.028      & 24.8     \\ \hline
+rs34311866  & TMEM175       & 9    & 0.286 & 0.001    & 0.03       & 8.905    \\ \hline
+rs34813     & GIN1          & 5    & 0.302 & 0.431    & 0.039      & 10.12    \\ \hline
+rs757262    & TRIM40        & 4    & 0.220 & 0.018    & 0.481      & 0.486    \\ \hline
+rs757259    & TRIM40        & 6    & 0.224 & 0.024    & 0.496      & 6.506    \\ \hline
+rs112872773 & HLA-DRB5      & 3    & 0.073 & 0.01     & 0.021      & 0.046    \\ \hline
+rs2904880   & CD19          & 3    & 0.314 & 0        & 0.137      & 7.698    \\ \hline
+rs9938550   & HSD3B7        & 7    & 0.362 & 0        & 0.616      & 4.028    \\ \hline
+rs61742072  & DNAH17        & 74   & 0.179 & 1        & No score   & 2.833245 \\ \hline
+rs2282632   & ASXL3         & 11   & 0.495 & 0.003    & 0.744      & 13.96    \\ \hline
+rs41282950  & CRLS1         & 4    & 0.126 & 0.952    & 0.648      & 27.4     \\ \hline
+\end{tabular}
+\caption{Coding variants}
+\end{table}
+
+The full ANNOVAR report is available in the \href{https://github.com/Thomas-brightwell/PD-MSc-project-code/blob/main/Thesis/Supplementary%20materials/HighLDvariants.avinput.variant_function}{supplementary materials}, as well as the \href{https://github.com/Thomas-brightwell/PD-MSc-project-code/blob/main/Thesis/Supplementary%20materials/HighLDvariants.avinput.exonic_variant_function}{exonic variant report}.
+
+
 \subsection{eQTL results}
 Combined, for GTEx and BRAINEAC:
 Summary for number of cisgenes
@@ -270,9 +312,21 @@ Median & 25                  & 2                               & 4.067852       
 
 Significant cis-genes per (n(cis-genes)*(n(high LD variants)*1000)
 any specific interesting blocks?
-eQTLs/(genes*variants)
-A total of 341 \textit{cis}-genes were identified as being significantly ($P \leq 0.05$) associated with at least one variant in high LD with the lead SNPs with the coordinates of the LD block.
+A total of 341 \textit{cis}-genes were identified as being significantly ($P \leq 0.05$) associated with at least one variant in high LD with the lead SNPs with the coordinates of the LD block. 64 of the 88 PD diease loci we identified in section \hyperref[subsec:blocks]{4.1} had at least one significant disease-eQTL \textit{cis}-gene associated with one or more variants in high LD with the lead SNP for that locus.
 
+\label{fisher1}
+A Fisher's exact test was used to test for over-representation of mitochondrial genes in the eQTL-\textit{cis}-genes, compared to the background of all \textit{cis}-genes. The following table was created:
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+       & eQTL + & eQTL - & Sum  \\ \hline
+Mito + & 23     & 182    & 205  \\ \hline
+Mito - & 284    & 1683   & 1967 \\ \hline
+Sum    & 307    & 1865   & 2172 \\ \hline
+\end{tabular}
+\end{table}
+
+There was no significant over-representation ($p = 0.2461 & OR = 0.7490$) of mitochondrial genes in the eQTL-\textit{cis}-genes.
 
 \subsection{DGE results}
 
@@ -290,6 +344,19 @@ MEGA venn diagram of ALL cis-genes across BRAINEAC PPMI GEO GTEX
 \end{figure}
 
 There were a total of 151 \textit{cis}-genes that showed both significant ($P \leq 0.05$) evidence of association with a variant in high LD with the lead SNP (the GTEx and BRAINEAC subsets), and significant ($P \leq 0.05$) evidence of differential expression between cases and controls (the GEO and PPMI subsets). The centre of the Venn diagram is sparsely populated - only 11 \textit{cis}-genes were significantly ($P \leq 0.05$) associated with a variant in high LD with the lead SNP in both the GTEx and BRAINEAC datasets. Additionally, only 45 \textit{cis}-genes were significantly ($P \leq 0.05$) differentially expressed in both PPMI and GEO. There were no \textit{cis}-genes that were part of all 4 datasets. 
+
+
+Similarly to section \hyperref[fisher1]{4.X}, a Fisher's exact test was used to see if there were significantly more mitochondrial eQTL-\textit{cis}-DEGs than expected, with the background of all eQTL-\textit{cis}-genes. The following table was generated:
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+                & DEG + & DEG - & Sum \\ \hline
+Mitochondrial + & 16    & 7     & 23  \\ \hline
+Mitochondrial - & 134   & 184   & 318 \\ \hline
+Sum             & 150   & 191   & 341 \\ \hline
+\end{tabular}
+\end{table}
+Mitochondrial eQTL-\textit{cis}-genes were significantly over-represented as DEGs compared to non-DEGs ($p = 0.0153 & OR = 3.1282$)
 \newpage
 \subsection{Pathway analysis results}
 Summary information for the blocks
@@ -299,18 +366,16 @@ Summary information for the blocks
 \begin{tabular}{|l|l|l|}
 \hline
                  & GEO & PPMI \\ \hline
-n, upregulated   & 0   & 2    \\ \hline
-n, downregulated & 26  & 0    \\ \hline
+n, pathways upregulated   & 0   & 2    \\ \hline
+n, pathways downregulated & 26  & 0    \\ \hline
 \end{tabular}
 \caption{summary of}
 \end{table}
 
-The full mitochondrial pathways dataset and the results from both GEO and PPMI are available \href{}{here}.
-using fgsea
-GSEA of mito 43 + NEMG lists (from hannah paper)
-26 of the 43 mitochondrial pathways were significantly (FDR $\leq0.05$) down-regulated in the observational case-control expression data from the GEO. This shows heavy mitochondrial disruption, but
+The full mitochondrial pathways dataset and the results from both GEO and PPMI are available in the follow locations: \href{https://github.com/Thomas-brightwell/PD-MSc-project-code/blob/main/Thesis/Supplementary%20materials/mito43.gmt}{Pathways}, \href{https://github.com/Thomas-brightwell/PD-MSc-project-code/blob/main/Thesis/Supplementary%20materials/GEO_gsea_results.csv}{GEO GSEA results},\href{https://github.com/Thomas-brightwell/PD-MSc-project-code/blob/main/Thesis/Supplementary%20materials/PPMI_gsea_results.csv}{PPMI GSEA results}.
+26 of the 43 mitochondrial pathways were significantly (FDR $\leq0.05$) down-regulated in the observational case-control expression data from the GEO. This shows heavy mitochondrial disruption in the PD patients, but causality is more complex (discussed further in section \hyperref[subsubsec:causality]{5.X.X}. Comparatively, only 2 of the 43 mitochondrial pathways were significantly ($FDR \leq 0.05$) differentially expressed when tested using the iPSC expression data derived from PPMI. These two pathways (Reactome metabolism of amino acids and derivatives & KEGG glycine, serine, and threonine metabolism) were both upregulated. The Reactome metabolism of amino acids pathway was significantly differentially expressed in both data sets, but in opposite directions. 
 Also on KEGG/similar
-
+GSEA of mito 43 + NEMG lists (from hannah paper)
 Some way of showing go terms/pathway of the genes
 
 Network analysis
@@ -323,6 +388,11 @@ Network analysis
     \label{fig:enter-label}
 \end{figure}
 \end{landscape}
+A network analysis of the eQTL-\textit{cis}-DEGs showed there were significantly more interactions than would be expected for a random set of proteins from both the genome ($p = 3.76e-08$) and from all \textit{cis}-genes ($p = 0.000677$). 
+Additionally, there was a cluster of 41 genes (shown in red in figure X) that had significantly more interactions within the list of all 151 genes than expected ($p = 0.000775$). However, functional enrichment was only detected when comparing to the whole genome background. This indicates that whilst the list of eQTL-\textit{cis}-DEGs are more connected than expected, they do not cluster together within pre-defined pathways. NOT SURE ABOUT THIS STATEMENT which is concurrent with the GSEA results.
+
+
+
 \section{Discussion}
 
 strengths and limitations
@@ -338,6 +408,17 @@ There is heterogeneity between each of the different experiments used from GEO, 
 This may impact which genes are differentially expressed.
 
 Some talk about sQTL vs the eQTL
+
+
+The GEO data is from tissue expression, so will include multiple cell types in the data. In contrast, the PPMI data is single cell.
+There are were only 7 control samples available for the PPMI data, leaving it quite under-powered. When combined with the differing study designs between two expression datasets used, it becomes hard to draw robust conclusions from comparisons between the two. Since using the iPSC data was an attempt to both replicate and validate the expression in one step, it may be better to separate these, and replicate the heavy down-regulation of mitochondrial pathways observed in the GEO dataset using similar data first, then separately validate it.
+
+
+
+
+
+\label{subsubsec:causality}
+
 
 \section{Conclusion}
 
